@@ -1,0 +1,53 @@
+STEPS
+
+I) ASSIGN MASTER ORDER
+
+II) FIND NONDUPLICATES
+
+ 	FIRST, sort on Penn ID
+    use condition (on row `n`, with IDs in row B):
+    	IF(B`n`=B`n-1`,0,IF(B`n+1`=B`n`,0,1))
+    	**Make sure to add 0 for first entry**
+
+III) REMOVE NONDUPLICATES
+
+	Sort on nonduplicate #, cut & paste to separate sheet
+	Delete duplicated indicator column
+
+IV) SORT BY SECTION NUMBER
+
+V) SORT BY SECTION BLOCK NUMBER -> PENN ID
+
+	Need to keep paired recitations as a whole block, so set Block Number to:
+	010 - 1
+	011 - 2
+	012 - 3
+	110 - 4
+	111 - 4
+	120 - 5
+	121 - 5
+	130 - 6
+	131 - 6
+
+V) "RESHAPE WIDE"
+
+	Copy-paste second observations (recitation) of each ID side-by-side with first observations (lecture)
+	(keep ALL columns, especially sequence number)
+
+VI) SORT & COLOR BY RECITATION SECTION NUMBER
+
+VII) RANDOMLY ASSIGN RECITATION, THEN LECTURE
+
+	A) ASSIGN RANDOM NUMBER IN RIGHTMOST COLUMN
+	B) SORT **WITHIN SECTION NUMBER** ACCORDING TO RANDOM VARIATE
+	C) ASSIGN RECITATIONS IN SEQUENCE ACCORDING TO PROPORTIONS
+	D) ASSIGN LECTURE **TO A COLUMN CLOSE TO LEFT HAND SIDE**
+
+VIII) RESHAPE LONG AGAIN
+
+	Re-paste recitation copy to below lecture copy
+	**TAKE CARE TO MAKE SURE COLUMNS LINE UP**
+
+IX) PASTE IN UNPAIRED OBSERVATIONS
+
+X) RESORT BY MASTER ORDER
