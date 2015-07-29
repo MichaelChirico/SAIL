@@ -4,17 +4,20 @@ I) ASSIGN MASTER ORDER
 
 II) FIND NONDUPLICATES
 
- 	FIRST, sort on Penn ID
-    use condition (on row `n`, with IDs in row B):
-    	IF(B`n`=B`n-1`,0,IF(B`n+1`=B`n`,0,1))
+ 	FIRST, sort on Penn ID (COLUMN B)
+    use condition (on row `n`):
+    	IF(OR(B`n`=B`n-1`,B`n+1`=B`n`),0,1)
     	**Make sure to add 0 for first entry**
+	Over-write formula with value
 
-III) REMOVE NONDUPLICATES
+III) FIX DUPLICATES
 
-	Sort on nonduplicate #, cut & paste to separate sheet
-	Delete duplicated indicator column
+	copy-paste all duplicate rows below main file
+	replace holding section with correct corresponding lecture
+	Flag duplicated lectures with X for later deletion
+	be sure to over-write formula with value
 
-IV) SORT BY SECTION NUMBER
+IV) SORT BY SECTION NUMBER (COLUMN F)
 
 V) SORT BY SECTION BLOCK NUMBER -> PENN ID
 
@@ -32,15 +35,22 @@ V) SORT BY SECTION BLOCK NUMBER -> PENN ID
 V) "RESHAPE WIDE"
 
 	Copy-paste second observations (recitation) of each ID side-by-side with first observations (lecture)
-	(keep ALL columns, especially sequence number)
+	(keep ALL columns, especially sequence number and lecture flag)
 
-VI) SORT & COLOR BY RECITATION SECTION NUMBER
+VI) SORT & COLOR BY RECITATION SECTION NUMBER (COLUMN R)
 
 VII) RANDOMLY ASSIGN RECITATION, THEN LECTURE
 
-	A) ASSIGN RANDOM NUMBER IN RIGHTMOST COLUMN
+	A) PASTE VECTOR OF RANDOM NUMBERS IN COLUMN U
 	B) SORT **WITHIN SECTION NUMBER** ACCORDING TO RANDOM VARIATE
-	C) ASSIGN RECITATIONS IN SEQUENCE ACCORDING TO PROPORTIONS
+	C) ASSIGN RECITATIONS IN SEQUENCE (COLUMN W) ACCORDING TO PROPORTIONS:
+	     201: 12, 203: 14, 205: 14, 207: 14, 231: 22
+	     202: 16, 204: 17, 206: 19, 208: 17, 232: 29
+	     211: 18, 213: 17, 215: 18, 217: 18, 241: 30
+	     212: 16, 214: 13, 216: 19, 218: 14, 242: 29
+	     221:  7, 223:  8, 225:  8, 227:  8, 251: 13
+	     222:  8, 224: 19, 226: 15, 228: 19, 252: 27
+
 	D) ASSIGN LECTURE **TO A COLUMN CLOSE TO LEFT HAND SIDE**
 
 VIII) RESHAPE LONG AGAIN
@@ -48,6 +58,8 @@ VIII) RESHAPE LONG AGAIN
 	Re-paste recitation copy to below lecture copy
 	**TAKE CARE TO MAKE SURE COLUMNS LINE UP**
 
-IX) PASTE IN UNPAIRED OBSERVATIONS
+IX) DELETE GHOST LECTURES FOR UNPAIRED OBSERVATIONS
+
+	Sort by column with ghost flag, delete all with X
 
 X) RESORT BY MASTER ORDER
