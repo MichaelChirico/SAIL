@@ -12,7 +12,7 @@ library(xlsx)
 library(data.table)
 
 input<-setDT(read.xlsx2(
-  "math104july27_output.xlsx",sheetIndex=1,header=F,
+  "finalfilejuly28_output.xlsx",sheetIndex=1,header=F,
   colClasses="character",stringsAsFactors=F),
   keep.rownames=T)
 gc()
@@ -30,5 +30,5 @@ main<-input[,paste0(rn,X1,X2,X3,X4,X5,X6,X7,X8,X9)]
 output<-c("=COLS> ----+----1----+----2----+----3----+----4----+-",
           "****** ***************************** Top of Data ****",
           main)
-write.table(output,file="math104july27_output_fwf.txt",
+write.table(output,file="finalfilejuly28_output_fwf.txt",
             row.names=F,col.names=F,quote=F)

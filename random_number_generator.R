@@ -14,6 +14,7 @@ setwd("~/Desktop/research/SAIL_maynard_et_al")
 set.seed(2435196)
 
 #Number of U[0,1] variates to draw
-NN<-1000L
+NN<-498L
 
-write.xlsx2(runif(NN),file="random_numbers_150728.xlsx")
+write.xlsx2(runif(NN),file="random_numbers_150729.xlsx",
+            row.names=F,col.names=F)
